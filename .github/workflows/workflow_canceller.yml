@@ -7,10 +7,11 @@ name: Automatic Workflow Canceller
 # Note that the action being used here automatically accounts for the current branch & the commit
 # hash of the tip of the branch to ensure it doesn't cancel previous workflows that aren't related
 # to the branch being evaluated.
-workflow_run:
-  workflows: ["Build Tests", "Unit Tests (Robolectric -- Gradle)", "Static Checks", "Unit Tests (Robolectric - Bazel)"]
-  types:
-    - requested
+on:
+  workflow_run:
+    workflows: ["Build Tests", "Unit Tests (Robolectric -- Gradle)", "Static Checks", "Unit Tests (Robolectric - Bazel)"]
+    types:
+      - requested
 
 jobs:
   cancel:
