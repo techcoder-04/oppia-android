@@ -22,7 +22,7 @@ import org.oppia.android.app.translation.AppLanguageResourceHandler
 import org.oppia.android.util.logging.CurrentAppScreenNameIntentDecorator.decorateWithScreenName
 import javax.inject.Inject
 
-// Home Activity test 2
+// Home Activity test 3
 /** The central activity for all users entering the app. */
 class HomeActivity :
   InjectableAutoLocalizedAppCompatActivity(),
