@@ -13,8 +13,6 @@ on:
   push:
   workflow_run:
     workflows: ["Build Tests", "Unit Tests (Robolectric -- Gradle)", "Static Checks", "Unit Tests (Robolectric - Bazel)"]
-    types:
-      - requested
 
 jobs:
   cancel:
@@ -27,4 +25,4 @@ jobs:
       # See https://github.com/styfle/cancel-workflow-action#advanced-pull-requests-from-forks for details on this workflow.
       - uses: styfle/cancel-workflow-action@0.8.0
         with:
-          workflow_id: ${{ github.event.workflow.id }}
+          workflow_id: 100948705
