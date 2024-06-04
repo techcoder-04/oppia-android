@@ -10,14 +10,19 @@ name: Automatic Workflow Canceller
 on:
   workflow_dispatch:
   pull_request:
+  push:
+  workflow_run:
+    workflows: ["Build Tests", "Unit Tests (Robolectric -- Gradle)", "Static Checks", "Unit Tests (Robolectric - Bazel)"]
 
 jobs:
   cancel:
     name: Cancel Previous Runs
     runs-on: ubuntu-20.04
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
     steps:
-      # See https://github.com/styfle/cancel-workflow-action for details on this workflow.
-      - uses: styfle/cancel-workflow-action@0.6.0
+      # See https://github.com/styfle/cancel-workflow-action#advanced-pull-requests-from-forks for details on this workflow.
+      - uses: styfle/cancel-workflow-action@0.8.0
         with:
-          workflow_id: main.yml
-          access_token: ${{ github.token }}
+          workflow_id: 100948705
